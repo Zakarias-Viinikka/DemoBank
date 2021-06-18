@@ -1,0 +1,79 @@
+﻿@model Mvc2Inlupp2.ViewModels.CustomerViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+
+    /*
+    public List<Accounts> account { get; set; }
+    public string name { get; set; }
+    public string gender { get; set; }
+    public string address { get; set; }
+    public string city { get; set; }
+    public string country { get; set; }
+    public string ssn { get; set; }
+    public int sumOfAllAccounts { get; set; }
+    public string telephoneNumber { get; set; }*/
+}
+<div class="container">
+    <div class="row">
+        <br />
+
+        <a asp-controller="Customer" asp-action="EditCustomer" asp-route-customerId="@Model.customer.id">
+            <button class="btn-info">Edit Customer</button>
+        </a>
+        <a asp-controller="Customer" asp-action="DeleteCustomer" asp-route-customerId="@Model.customer.id">
+            <button class="btn-info">Delete Customer</button>
+        </a>
+    </div>
+    <div class="row">
+        <p class="text-wrap">
+
+            Name: @Model.customer.name <br />
+            Gender: @Model.customer.gender <br />
+            Country: @Model.customer.country <br />
+            City: @Model.customer.city <br />
+            Address: @Model.customer.address <br />
+            Social Security Number: @Model.customer.ssn <br />
+            Telephone Number: @Model.customer.telephoneNumber <br />
+            Total Sum of Balance in all Accounts: @Model.customer.totalBalance
+    </div>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Account</th>
+                    <th scope="col">Balance</th>
+                    <th scope="col">Disposition Type</th>
+                    <th scope="col"></th>
+                    <th scope="col"><a asp-action="AddAccount" asp-route-id="@Model.customer.id">Add Account</a></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var account in Model.customer.accounts)
+                {
+                    <tr>
+                        <th scope="row">
+                            <a asp-controller="Customer" asp-route-id="@account.id" asp-action="Account">
+                                @account.id
+                            </a>
+                        </th>
+                        <td>
+                            @account.balance
+                        </td>
+                        <td>
+                            @account.dispositionType
+                        </td>
+                        <td>
+                            <a asp-action="AddDisponent" asp-route-accountId="@account.id" asp-route-customerId="@Model.customer.id">Add Disposition</a>
+                        </td>
+                        <td>
+                            <a asp-action="DeleteAccount" asp-route-accountId="@account.id" asp-route-customerId="@Model.customer.id">Remove Account</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

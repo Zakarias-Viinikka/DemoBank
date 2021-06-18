@@ -1,0 +1,36 @@
+﻿@model Mvc2Inlupp2.ViewModels.CashierInsertMoneyViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Insert Money</h2>
+<form asp-controller="Cashier" asp-action="InsertMoney" method="post">
+    <div class="form-group">
+        <label asp-for="toAccount">To Account</label>
+        <input class="form-control" asp-for="toAccount">
+        <span asp-validation-for="toAccount" class="field-validation-error"></span>
+        <br />
+
+        <label asp-for="symbol">Symbol</label>
+        <input class="form-control" asp-for="symbol">
+        <span asp-validation-for="symbol" class="field-validation-error"></span>
+        <br />
+
+        <label asp-for="type">Type of Transfer</label>
+        <input class="form-control" asp-for="type">
+        <span asp-validation-for="type" class="field-validation-error"></span>
+        <br />
+
+        <label asp-for="bank">Bank</label>
+        <input class="form-control" asp-for="bank">
+        <span asp-validation-for="bank" class="field-validation-error"></span>
+        <br />
+
+        <label asp-for="amount">Amount</label>
+        <input class="form-control" asp-for="amount">
+        <span asp-validation-for="amount" class="field-validation-error"></span>
+
+
+        <br />
+        <button type="submit" class="btn btn-primary">Transfer</button>
+    </div>
+</form>

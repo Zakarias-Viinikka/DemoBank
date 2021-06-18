@@ -1,0 +1,31 @@
+﻿
+
+.icon-color {
+    filter: invert(68%) sepia(3%) saturate(289%) hue-rotate(169deg) brightness(91%) contrast(91%);
+}
+
+.searchIcon {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(201deg) brightness(106%) contrast(106%);
+}
+
+body {
+    min-height: 100vh;
+    height: auto;
+    position: relative;
+    margin: 0;
+    padding: none;
+    padding-bottom: 60px;
+    //height of the footer box-sizing: border-box;
+}
+
+footer {
+    position: absolute;
+    bottom: -1;
+    height: 62px;
+    background-color: #212529;
+    margin: none;
+    color: rgba(255, 255, 255, 0.5)
+}

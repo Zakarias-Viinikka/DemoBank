@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>@ViewData["Title"] - Bank System</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
+    @if (IsSectionDefined("AddToHead"))
+    {
+        @RenderSection("AddToHead", required: false)
+    }
+</head>
+<body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <a class="navbar-brand" asp-controller="Home" asp-action="Index">Bank System</a>
+        <button style="height:100%;" class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#!">
+            <img class="icon-color" style="width: 1.5em;" src="~/assets/icons/menu.svg" alt="https://www.flaticon.com/authors/pixel-perfect" />
+        </button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0" asp-controller="Customer" asp-action="Customers">
+            <div class="input-group">
+                <input class="form-control" type="text" name="q" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2" />
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="submit">
+                        <img class="icon-color searchIcon" style="width: 1.25em;" src="~/assets/icons/search.svg" alt="profile" />
+                    </button>
+                </div>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ml-auto ml-md-0">
+            <li class="nav-item dropdown">
+                <div class="dropdown">
+                    <a style="height:100%;" class="nav-link dropdown-toggle" id="userDropdown" href="#!" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img class="icon-color" style="width: 1.5em;" src="~/assets/icons/profile.svg" alt="profile" />
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                        <partial name="_LoginPartial" />
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    @if (this.User.IsInRole("Admin") || this.User.IsInRole("Cashier"))
+                    {
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Customers</div>
+                        <a class="nav-link" asp-controller="Customer" asp-action="Customers">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Customers
+                        </a>
+                        <a class="nav-link" asp-controller="Customer" asp-action="NewCustomer">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            New Customer
+                        </a>
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Cashier</div>
+                            <a class="nav-link" asp-controller="Cashier" asp-action="TransferMoney">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Transfer Money
+                            </a>
+                            <a class="nav-link" asp-controller="Cashier" asp-action="TakeOutMoney">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Withdraw Money
+                            </a>
+                            <a class="nav-link" asp-controller="Cashier" asp-action="InsertMoney">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Insert Money
+                            </a>
+                        </div>
+
+                        @if (this.User.IsInRole("Admin"))
+                        {
+                            <div class="sb-sidenav-menu-heading">Admin</div>
+                            <a class="nav-link" asp-controller="Admin" asp-action="ManageUsers">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Manage Users
+                            </a>
+                        }
+
+                    </div>
+                    }
+                </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">
+                        Logged in as: <span id="loggedInAsDiv"></span>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div id="layoutSidenav_content">
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Mvc2Inlupp2 - Zakarias Viinikka
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/scripts.js" asp-append-version="true"></script>
+    <script src="~/js/layoutScript.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

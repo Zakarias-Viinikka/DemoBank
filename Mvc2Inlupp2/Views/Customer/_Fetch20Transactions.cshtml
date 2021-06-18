@@ -1,0 +1,15 @@
+﻿@model List<Mvc2Inlupp2.ViewModels.CustomerAccountViewModel.Transaction>;
+@{
+    Layout = null;
+}
+
+@foreach (var transaction in Model)
+{
+    <tr id="transactions">
+        <td>@transaction.amount</td>
+        <td>@transaction.date</td>
+        <td>@transaction.operation</td>
+        <td>@transaction.type</td>
+        <td>@transaction.bank</td>
+    </tr>
+}

@@ -1,0 +1,63 @@
+﻿@model Mvc2Inlupp2.ViewModels.CustomerEditViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>New Customer</h2>
+<form asp-controller="Customer" asp-action="NewCustomer" asp-route-id="@Model.CustomerId">
+    <div class="form-group">
+        <label asp-for="Gender">Gender</label>
+        <input class="form-control" asp-for="Gender">
+        <span asp-validation-for="Gender" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Givenname">Givenname</label>
+        <input class="form-control" asp-for="Givenname">
+        <span asp-validation-for="Givenname" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Surname">Surname</label>
+        <input class="form-control" asp-for="Surname">
+        <span asp-validation-for="Surname" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Streetaddress">Street address</label>
+        <input class="form-control" asp-for="Streetaddress">
+        <span asp-validation-for="Streetaddress" class="field-validation-error"></span>
+        <br />
+        <label asp-for="City">City</label>
+        <input class="form-control" asp-for="City">
+        <span asp-validation-for="City" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Zipcode">Zipcode</label>
+        <input class="form-control" asp-for="Zipcode">
+        <span asp-validation-for="Zipcode" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Country">Country</label>
+        <input class="form-control" asp-for="Country">
+        <span asp-validation-for="Country" class="field-validation-error"></span>
+        <br />
+        <label asp-for="CountryCode">CountryCode</label>
+        <input class="form-control" asp-for="CountryCode">
+        <span asp-validation-for="CountryCode" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Birthday">Birthday - MM/dd/yyyy</label>
+        <input class="form-control" asp-for="Birthday">
+        <span asp-validation-for="Birthday" class="field-validation-error"></span>
+        <br />
+        <label asp-for="NationalId">NationalId</label>
+        <input class="form-control" asp-for="NationalId">
+        <span asp-validation-for="NationalId" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Telephonecountrycode">Telephonecountrycode</label>
+        <input class="form-control" asp-for="Telephonecountrycode">
+        <span asp-validation-for="Telephonecountrycode" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Telephonenumber">Telephonenumber</label>
+        <input class="form-control" asp-for="Telephonenumber">
+        <span asp-validation-for="Telephonenumber" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Emailaddress">Emailaddress</label>
+        <input class="form-control" asp-for="Emailaddress">
+        <span asp-validation-for="Emailaddress" class="field-validation-error"></span>
+        <br />
+
+        <button type="submit" class="btn btn-primary">Add Customer</button>
+    </div>
+</form>

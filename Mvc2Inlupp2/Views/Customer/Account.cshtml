@@ -1,0 +1,76 @@
+﻿@model Mvc2Inlupp2.ViewModels.CustomerAccountViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{
+
+/*
+public Account account { get; set; }
+    public class Account
+    {
+
+        public int id { get; set; }
+        public decimal balance { get; set; }
+        public List<Transaction> transactions { get; set; } = new List<Transaction>();
+    }
+
+    public class Transaction
+    {
+        DateTime date { get; set; }
+        string type { get; set; }
+        string operation { get; set; }
+        string amount { get; set; }
+        string bank { get; set; }
+    }
+*/
+}
+<div class="container">
+    Account Number: @Model.account.id<br />
+    Balance: @Model.account.balance
+    <div class="row">
+        <br />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Operation</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Bank</th>
+                </tr>
+            </thead>
+            <tbody id="transactions">
+                @foreach (var transaction in Model.account.transactions)
+                {
+                    <tr>
+                        <td>@transaction.amount</td>
+                        <td>@transaction.date</td>
+                        <td>@transaction.operation</td>
+                        <td>@transaction.type</td>
+                        <td>@transaction.bank</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="row">
+        <button class="btn-primary" onclick="load20MoreTransactions()">20 mer</button>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        let transactionFetchCtr = 1;
+        function load20MoreTransactions() {
+            console.log("ajax got called")
+            $.ajax({
+                url: "/Customer/_Fetch20Transactions?id=" + @Model.account.id + "&ctr=" + transactionFetchCtr,
+                success: function (result) {
+                    $("#transactions").append(result);
+                    console.log("adding 20 transactions to view");
+                    transactionFetchCtr++;
+                }
+            });
+        }
+    </script>
+}

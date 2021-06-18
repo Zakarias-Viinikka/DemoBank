@@ -1,0 +1,16 @@
+﻿@model Mvc2Inlupp2.ViewModels._PartialLoggedInAsViewModel
+@{
+    Layout = null;
+}
+
+@if (Model.userIsLoggedIn)
+{
+    if (Model.userRole != null)
+    {
+        @Model.userRole
+    }
+    else
+    {
+        @: Inloggad utan roll
+    }
+}

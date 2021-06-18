@@ -1,0 +1,83 @@
+﻿@model Mvc2Inlupp2.ViewModels.CustomerEditViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+@{ 
+/*
+               CustomerId	int	Unchecked
+               Gender	nvarchar(6)	Unchecked
+               Givenname	nvarchar(100)	Unchecked
+               Surname	nvarchar(100)	Unchecked
+               Streetaddress	nvarchar(100)	Unchecked
+               City	nvarchar(100)	Unchecked
+               Zipcode	nvarchar(15)	Unchecked
+               Country	nvarchar(100)	Unchecked
+               CountryCode	nvarchar(2)	Unchecked
+               Birthday	date	Checked
+               NationalId	nvarchar(20)	Checked
+               Telephonecountrycode	nvarchar(10)	Checked
+               Telephonenumber	nvarchar(25)	Checked
+               Emailaddress	nvarchar(100)	Checked
+           */
+}
+<h2>Edit Customer</h2>
+<form asp-controller="Customer" asp-action="EditCustomer" method="post">
+    <div class="form-group">
+        <label asp-for="Gender">Gender</label>
+        <input class="form-control" asp-for="Gender" value="@Model.Gender">
+        <span asp-validation-for="Gender" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Givenname">Givenname</label>
+        <input class="form-control" asp-for="Givenname" value="@Model.Givenname">
+        <span asp-validation-for="Givenname" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Surname">Surname</label>
+        <input class="form-control" asp-for="Surname" value="@Model.Surname">
+        <span asp-validation-for="Surname" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Streetaddress">Street address</label>
+        <input class="form-control" asp-for="Streetaddress" value="@Model.Streetaddress">
+        <span asp-validation-for="Streetaddress" class="field-validation-error"></span>
+        <br />
+        <label asp-for="City">City</label>
+        <input class="form-control" asp-for="City" value="@Model.City">
+        <span asp-validation-for="City" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Zipcode">Zipcode</label>
+        <input class="form-control" asp-for="Zipcode" value="@Model.Zipcode">
+        <span asp-validation-for="Zipcode" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Country">Country</label>
+        <input class="form-control" asp-for="Country" value="@Model.Country">
+        <span asp-validation-for="Country" class="field-validation-error"></span>
+        <br />
+        <label asp-for="CountryCode">CountryCode</label>
+        <input class="form-control" asp-for="CountryCode" value="@Model.CountryCode">
+        <span asp-validation-for="CountryCode" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Birthday">Birthday</label>
+        <input class="form-control" asp-for="Birthday" value="@Model.Birthday">
+        <span asp-validation-for="Birthday" class="field-validation-error"></span>
+        <br />
+        <label asp-for="NationalId">NationalId</label>
+        <input class="form-control" asp-for="NationalId" value="@Model.NationalId">
+        <span asp-validation-for="NationalId" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Telephonecountrycode">Telephonecountrycode</label>
+        <input class="form-control" asp-for="Telephonecountrycode" value="@Model.Telephonecountrycode">
+        <span asp-validation-for="Telephonecountrycode" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Telephonenumber">Telephonenumber</label>
+        <input class="form-control" asp-for="Telephonenumber" value="@Model.Telephonenumber">
+        <span asp-validation-for="Telephonenumber" class="field-validation-error"></span>
+        <br />
+        <label asp-for="Emailaddress">Emailaddress</label>
+        <input class="form-control" asp-for="Emailaddress" value="@Model.Emailaddress">
+        <span asp-validation-for="Emailaddress" class="field-validation-error"></span>
+        <br />
+        <input class="form-control" style="display:none;" asp-for="CustomerId" value="@Model.CustomerId">
+
+        <br />
+        <button type="submit" class="btn btn-primary">Save Changes</button>
+    </div>
+</form>

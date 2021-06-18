@@ -1,0 +1,148 @@
+﻿@model Mvc2Inlupp2.ViewModels.CustomerCustomersViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+
+                @if (Model.orderBy == "customers" && Model.descending == true)
+                {
+                    <th scope="row">
+
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="customers" asp-route-pageNumber="1">
+                            # ↓
+                        </a>
+                    </th>
+                }
+                else
+                {
+
+                    <th scope="row">
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="customers" asp-route-descending="true" asp-route-pageNumber="1">
+                            # ↑
+                        </a>
+                    </th>
+                }
+
+
+                @if (Model.orderBy == "name" && Model.descending == true)
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="name" asp-route-pageNumber="1">
+                            Name ↓
+                        </a>
+                    </th>
+                }
+                else
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="name" asp-route-descending="true" asp-route-pageNumber="1">
+                            Name ↑
+                        </a>
+                    </th>
+                }
+
+                @if (Model.orderBy == "address" && Model.descending == true)
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="address" asp-route-pageNumber="1">
+                            Address ↓
+                        </a>
+                    </th>
+                }
+                else
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="address" asp-route-descending="true" asp-route-pageNumber="1">
+                            Address ↑
+                        </a>
+                    </th>
+                }
+
+                @if (Model.orderBy == "city" && Model.descending == true)
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="city" asp-route-pageNumber="1">
+                            City ↓
+                        </a>
+                    </th>
+                }
+                else
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="city" asp-route-descending="true" asp-route-descending="true" asp-route-pageNumber="1">
+                            City ↑
+                        </a>
+                    </th>
+                }
+
+                @if (Model.orderBy == "ssn" && Model.descending == true)
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="ssn" asp-route-pageNumber="1">
+                            Social Security Number ↓
+                        </a>
+                    </th>
+                }
+                else
+                {
+                    <th>
+                        <a asp-action="Customers" asp-route-q="@Model.q" asp-route-orderBy="ssn" asp-route-descending="true" asp-route-pageNumber="1">
+                            Social Security Number ↑
+                        </a>
+                    </th>
+                }
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = Model.pager.StartIndex; i < Model.pager.EndIndex && Model.pager.StartIndex >= 0; i++)
+            {
+                <tr>
+                    <th scope="row">
+                        <a asp-controller="Customer" asp-action="Customer" asp-route-id="@Model.customers[i].id">
+                            @Model.customers[i].id
+                        </a>
+                    </th>
+                    <td>@Model.customers[i].customerName</td>
+                    <td>@Model.customers[i].address</td>
+                    <td>@Model.customers[i].city</td>
+                    <td>@Model.customers[i].ssn</td>
+                </tr>
+
+            }
+            @foreach (var page in Model.pager.Pages)
+            {
+
+            }
+            <tr>
+                <td colspan="5">
+                    @if (Model.pager.CurrentPage - 1 > 0)
+                    {
+                        <a type="button" class="btn btn-dark" asp-action="Customers" asp-route-q="@Model.q" asp-route-pageNumber="@(Model.pager.CurrentPage - 1)" asp-route-orderBy="@Model.orderBy" asp-route-descending="@Model.descending"> &lt; </a>
+                    }
+                    @foreach (var page in Model.pager.Pages)
+                    {
+
+                        if (page == Model.pager.CurrentPage)
+                        {
+                            <a type="button" class="btn btn-light" asp-action="Customers" asp-route-q="@Model.q" asp-route-pageNumber="@(page)" asp-route-orderBy="@Model.orderBy" asp-route-descending="@Model.descending">@(page)</a>
+                        }
+                        else
+                        {
+                            <a type="button" class="btn btn-dark" asp-action="Customers" asp-route-q="@Model.q" asp-route-pageNumber="@(page)" asp-route-orderBy="@Model.orderBy" asp-route-descending="@Model.descending">@(page)</a>
+                        }
+                    }
+
+                    @if (Model.pager.EndPage + 1 < Model.pager.TotalPages)
+                    {
+                        <a type="button" class="btn btn-dark" asp-action="Customers" asp-route-q="@Model.q" asp-route-pageNumber="@(Model.pager.CurrentPage + 1)" asp-route-orderBy="@Model.orderBy" asp-route-descending="@Model.descending">></a>
+                    }
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

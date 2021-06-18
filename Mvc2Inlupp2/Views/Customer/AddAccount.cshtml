@@ -1,0 +1,17 @@
+﻿@model Mvc2Inlupp2.ViewModels.CustomerAddAccountViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+<h2>Insert Money</h2>
+<form asp-controller="Customer" asp-action="AddAccount" method="post">
+    <div class="form-group">
+        <label asp-for="Frequency">Frequency</label>
+        <input class="form-control" asp-for="Frequency">
+        <span asp-validation-for="Frequency" class="field-validation-error"></span>
+        <br />
+        <input class="form-control" style="display:none;" asp-for="CustomerId" value="@Model.CustomerId">
+
+        <br />
+        <button type="submit" class="btn btn-primary">Add Account</button>
+    </div>
+</form>

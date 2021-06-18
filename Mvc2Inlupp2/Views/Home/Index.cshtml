@@ -1,0 +1,25 @@
+﻿@model Mvc2Inlupp2.ViewModels.HomeIndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Amount of Customers</th>
+                <th scope="col">Amount of Accounts</th>
+                <th scope="col">Sum of balance on all accounts</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td>@Model.numberOfCustomers</td>
+                <td>@Model.numberOfAccounts</td>
+                <td>@Model.sumOfBalanceFromAllAccounts kr</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
